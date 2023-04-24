@@ -4,7 +4,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose');
  //routes
-// const productRoutes = require('./routes/product')   
+const programRoutes = require('./routes/program')
+const exerciseRoutes = require('./routes/exercise')
 const errorController = require('./controllers/error');
 const app = express();
 
@@ -13,7 +14,8 @@ app.use(cors());     //For cross-origin resources sharing
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(bodyParser.urlencoded({ extended:true }))
 app.use(bodyParser.json());
-// app.use(productRoutes)
+app.use('/program', programRoutes)
+app.use('/exercise', programRoutes)
 app.use(errorController.get404);
 
 mongoose.connect('mongodb+srv://kirti:test1234@cluster0.wgasf.mongodb.net/Fitness-APP?retryWrites=true&w=majority')
