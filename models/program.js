@@ -5,11 +5,11 @@ const programSchema = new Schema({
         type: String,
         required: true
     },
-    exerciseId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Exercise',
-        required: true
-    }
+    exercises: [
+        {
+          type: Object, required: true
+        }
+      ]
 })
 
 module.exports = mongoose.model('Program', programSchema);
